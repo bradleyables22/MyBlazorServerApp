@@ -1,0 +1,73 @@
+﻿@inject NavigationManager navigationManager
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Bradley Ables &#8211 .NET Developer </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/resume">Resume</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/guests">Sign My Guestbook</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Chat</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            For Fun
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Game 1</a></li>
+            <li><a class="dropdown-item" href="#">Game 2</a></li>
+            <li><a class="dropdown-item" href="#">Game 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+@code {
+    private const string homePageUri = "/";
+    private const string portPageUri = "/portfolio";
+
+
+    //method to cycle through available pages and check if they are active for display
+    private bool IsPageActive(string pagetoCheckUri)
+    {
+        //skip(3) takes away domain
+        string[] currentUriSplitBetweenSlashes = navigationManager.Uri.Split('/').Skip(3).ToArray();
+        if (pagetoCheckUri == homePageUri)
+        {
+            if (currentUriSplitBetweenSlashes.Last().Length == 0)
+            {
+                return true;
+            }
+        }
+        else
+        {
+            string[] pageToCheckUriSplitBetweenSlashes = pagetoCheckUri.Split('/').Skip(1).ToArray();
+
+            foreach (string currentUriPart in currentUriSplitBetweenSlashes)
+            {
+                foreach ( string pageToCheckUriPart in pageToCheckUriSplitBetweenSlashes)
+                {
+                    if (pageToCheckUriPart == currentUriPart)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        //if the code gets here it is not active page
+        return false;
+    }
+}
