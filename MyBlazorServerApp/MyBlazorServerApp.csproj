@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="wwwroot\pdf\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\Models\" />
   </ItemGroup>
 
 </Project>
