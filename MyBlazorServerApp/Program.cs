@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
-using MyBlazorServerApp.Controllers;
 using MyBlazorServerApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,10 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddDbContext<PortfolioDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-//scoped services&controllers 
-builder.Services.AddScoped<GuestEntriesController>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
