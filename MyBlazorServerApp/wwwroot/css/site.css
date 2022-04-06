@@ -23,6 +23,24 @@
 .shadow:hover {
     box-shadow: 0 0.15rem 0.4rem rgba(0, 0, 0, 0.8) !important;
 }
+.m-5px {
+    margin:5px;
+}
+.m-5 {
+    margin:5%;
+}
+.m-10px {
+    margin:10px;
+}
+.m-10 {
+    margin:10%;
+}
+.m-15px {
+    margin:15px;
+}
+.m-15 {
+    margin:15%;
+}
 
 .w-8 {
     width: 8%;
@@ -60,7 +78,9 @@
 .bg-lightgray {
     background-color: #EBEBEB;
 }
-
+warner {
+    background-color:darkred;
+}
 .bg-black {
     background-color: black;
 }
@@ -98,9 +118,24 @@ body {
 }
 
 .card {
-    border-radius: 0px;
+    border-radius: 5px;
+}
+.center-text {
+    text-align:center;
+}
+.left-text {
+    text-align:left;
+}
+.right-text {
+    text-align:right;
+}
+.f-mini-1 {
+    font-size: 1rem;
 }
 
+.f-mini-2 {
+    font-size: 1rem;
+}
 .btn-update {
     color: #FFF;
     background-color: #cfb300;
