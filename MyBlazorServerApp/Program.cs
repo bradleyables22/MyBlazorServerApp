@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
 using MyBlazorServerApp.Controllers;
 using MyBlazorServerApp.Data;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

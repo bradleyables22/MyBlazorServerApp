@@ -1,7 +1,69 @@
 ﻿@page "/about"
 
-<h3>About</h3>
-
-@code {
+@*This page acts as hub to specific sections*@
+<br/>
+<br/>
+<main class="d-flex flex-column w-100 min-vh-90 justify-content-center align-items-center overflow-auto ">
+    <div class="container g-0">
+        <div class="top-row g-0">
+            <div class="col-lg-12 d-inline-flex flex-column p-5 center-text f-mini-1 f-white">
+                <h1>Hello & Welcome!</h1><br/>
+                <h3>My name is Bradley Ables. And I am much more than just a practioner of the dark arts of .NET development. The path to "developer" is rarely linear and in this instance I am no different. There many aspects of my background that make me...me.</h3>
+                <h3>Feel free to explore these specific areas below</h3>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row g-0">
+            <div class="col-lg-6 d-inline-flex flex-column p-5 f-white center-text">
+                <h1>Software Development</h1><br/>
+                <h3>Seeing as this is probably why you are here, of course this would come first! This button will take you to the section where discuss schooling, my strengths and weaknesses between different languages & frameworks, as well as how I've applied them in my life.</h3>
+                <br/>
+                <a href="/software" class="btn btn-primary shadow btn-lg fw-fold mt-4 md-f-size-1-5">
+                    <i class="fa-solid fa-code"></i>
+                    <p>Software Development</p>
+                    <i class="fa-solid fa-diagram-project"></i>
+                </a>
+            </div>
+            <div class="col-lg-6 d-inline-flex flex-column p-5 "></div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row g-0">
+            <div class="col-lg-6 d-inline-flex flex-column p-5 "></div>
+            <div class="col-lg-6 d-inline-flex flex-column p-5 f-white center-text">
+                <h1>Leadership In a Crisis</h1><br/>
+                <h3>Leadership, management, and it's plethora of soft skills are a core aspect of who I am. This button will take you to the section outlining these skills and how I applied them to help facilitate covid testing in Southern Indiana. </h3>
+                <br/>
+                 <a href="/management" class="btn btn-primary shadow btn-lg fw-fold mt-4 md-f-size-1-5">
+                    <i class="fa-solid fa-virus-covid"></i>
+                    <p>Leadership | Management</p>
+                    <i class="fa-solid fa-user-tie"></i>
+                </a>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row g-0">
+            <div class="col-lg-6 d-inline-flex flex-column p-5 f-white center-text">
+                <h1>Military Background</h1>
+                <br/>
+                <h3>From my time as "private Ables" to being the team leader of 2nd squad alpha team leader the lessons instilled in the U.S Army have carried forward with me through my experiences outside of service. This section outlines my time in service.</h3>
+                <br/>
+                <a href="/military" class="btn btn-primary shadow btn-lg fw-fold mt-4 md-f-size-1-5">
+                    <i class="fa-solid fa-person-rifle"></i>
+                    <p>Military Background</p>
+                    <i class="fa-solid fa-flag-usa"></i>
+                </a>
+            </div>
+            <div class="col-lg-6 d-inline-flex flex-column p-5"></div>
+        </div>
+        <br/>
+        <br/>
+    </div>
+</main>
+<br/>
+@code
+{
 
 }

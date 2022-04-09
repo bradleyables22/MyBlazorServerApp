@@ -5,16 +5,6 @@
     margin:0px;
 }
 
-.resume-pic-1 {
-    background-image: url("img/respic1.svg");
-    background-size: contain;
-    background-repeat:no-repeat;
-}
-.resume-pic-2 {
-    background-image: url("img/respic2.svg");
-    background-size: contain;
-    background-repeat:no-repeat;
-}
 .resume-full-sized {
     width:90%;
     height:1056px;
