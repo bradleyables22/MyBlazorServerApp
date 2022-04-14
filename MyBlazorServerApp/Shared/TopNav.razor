@@ -1,23 +1,24 @@
 ﻿@inject NavigationManager navigationManager
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark f-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Bradley Ables &#8211 .NET Developer </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse f-white" id="navbarNavDropdown">
+      <ul class="navbar-nav f-white">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/about" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle f-white" href="/about" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             About Me
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li>
-                <a class="dropdown-item" href="management"><i class="fa-solid fa-user-tie"></i> Management | Operations</a>
-            </li>
+              
             <li>
                 <a class="dropdown-item" href="software"><i class="fa-solid fa-code"></i> Software Development</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="leadership"><i class="fa-solid fa-user-tie"></i> Leadership | Operations</a>
             </li>
             <li>
                 <a class="dropdown-item" href="military"><i class="fa-solid fa-person-rifle"></i> Military Background</a>
@@ -36,38 +37,5 @@
 </nav>
 
 @code {
-    private const string homePageUri = "/";
-    private const string portPageUri = "/portfolio";
-
-
-    //method to cycle through available pages and check if they are active for display
-    private bool IsPageActive(string pagetoCheckUri)
-    {
-        //skip(3) takes away domain
-        string[] currentUriSplitBetweenSlashes = navigationManager.Uri.Split('/').Skip(3).ToArray();
-        if (pagetoCheckUri == homePageUri)
-        {
-            if (currentUriSplitBetweenSlashes.Last().Length == 0)
-            {
-                return true;
-            }
-        }
-        else
-        {
-            string[] pageToCheckUriSplitBetweenSlashes = pagetoCheckUri.Split('/').Skip(1).ToArray();
-
-            foreach (string currentUriPart in currentUriSplitBetweenSlashes)
-            {
-                foreach ( string pageToCheckUriPart in pageToCheckUriSplitBetweenSlashes)
-                {
-                    if (pageToCheckUriPart == currentUriPart)
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-        //if the code gets here it is not active page
-        return false;
-    }
+    
 }

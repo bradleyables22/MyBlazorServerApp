@@ -1,4 +1,7 @@
 ﻿@page "/"
+@using BlazorTypewriter
+<br/>
+<br/>
 <br/>
 <main class="d-flex flex-column w-100 min-vh-90 justify-content-center align-items-center overflow-auto ">
     <div class="container g-0">
@@ -6,17 +9,52 @@
             <div class="col-lg-6 d-inline-flex flex-column p-5 ">
                 <img src="/img/me.svg" class="profile-h-w"/>
             </div>
-            <div class="col-lg-6 d-inline-flex flex-column bg-white-94 p-5 shadow-no-hover">
-                <h1 class="d-inline-flex"> Hi! I'm Bradley Ables.</h1>
-                <p class="d-inline-flex">Welcome to my blazor showcase and repository. </p>
-                <a href="/portfolio" class="btn btn-primary shadow btn-lg fw-fold mt-3 md-f-size-1-5">
-                    <i class="fas fa-project-diagram"></i> Projects
+            <div class="col-lg-6 d-inline-flex flex-column bg-white-94 p-5 shadow-no-hover center-text">
+                <h1 class="typer"><Typewriter Builder="@typewriter"/></h1><br/>
+                <p>I'm honored you've found your way to my site. I'm a graduate of software development and systems design that focuses in the .NET framework. Less than a year out of college I used my stack to build an organization with an annual gross revenue of $300,000.</p>
+                <p>I'm currently selling this business and seeking to apply these skills with the right company.</p>
+                <br/>
+                <a href="/about" class="btn btn-primary shadow btn-lg fw-fold mt-4 md-f-size-1-5">
+                    <i class="fas fa-info-circle"></i> About Me
                 </a>
-                <a href="/about" class="btn btn-secondary shadow btn-lg fw-fold mt-4 md-f-size-1-5">
-                    <i class="fas fa-info-circle"></i> More Information
-                </a>
+                <br/>
+                <br/>
+                <br/>
+                <div class="row g-0 justify-content-center align-items-center">
+                    <div class="col-lg-2 d-inline-flex flex-column justify-content-center align-items-center">
+                        <img src="/img/c.svg" height="50" width="50"/>
+                    </div>
+                    <div class="col-lg-2 d-inline-flex flex-column justify-content-center align-items-center">
+                        <img src="/img/bootstrap-5-1.svg" height="50" width="50"/>
+                    </div>
+                    <div class="col-lg-2 d-inline-flex flex-column justify-content-center align-items-center">
+                        <img src="/img/microsoft-sql-server-1.svg" height="50" width="50"/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </main>
 <br/>
+<br/>
+<br/>
+@code
+{
+    //Used opensource Typewriter. 
+    //github.com/ormesam/blazor-typewriter/commit/11025ae103fad55a77c4e200193bf214ebb669d3
+    TypewriterBuilder typewriter = new TypewriterBuilder(defaultCharacterPause: 6)
+        .TypeString("Bradley Ables")
+        .Pause(1000)
+        .DeleteAll(30)
+        .TypeString(".NET Developer", 50)
+        .Pause(1000)
+        .DeleteAll(30)
+        .TypeString("Twitter: @TenaciousD_ata", 50)
+        .Pause(1000)
+        .DeleteAll(30)
+        .TypeString("Discord: TenaciousD_ata#3302", 50)
+        .Pause(1000)
+        .DeleteAll(30)
+        .Loop();
+
+}
