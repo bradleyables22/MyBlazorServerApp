@@ -1,13 +1,15 @@
 ﻿@page "/guests"
 @using MyBlazorServerApp.Controllers
 @using MyBlazorServerApp.Data.Models
+@using BlazorTypewriter
+
 @inherits OwningComponentBase<GuestEntriesController>
 @inject Controllers.GuestEntriesController entriesController
 
 <div class="container g-0 justify-content-center align-items-center center-text p-5">
-    <div class="row g-0">
-        <div class="col-lg-12 f-size-3 f-white">
-            <p>Welcome to my guest book!</p>
+    <div class="row g-0 p-5 bg-white-94 shadow-no-hover">
+        <div class="col-lg-12 f-size-3">
+            <p><Typewriter Builder="@typewriter"/></p>
             <div class="f-mini-2">Feel free to leave a comment, shout-out, and of course constructive feedback!</div>
             <div class="f-mini-1">Inapproprate comments will be removed.</div>
             <button class="btn btn-primary shadow btn-lg" @onclick="ShowEntryForm">
@@ -32,10 +34,28 @@
                     <div class="modal-body" style="width:90%;">
                         <textarea placeholder="Please leave a message." @bind="input" style="width:90%;"></textarea>
                     </div>
+                    <div class="modal-body" style="width:90%;">
+                        @if (human)
+                        {
+                            <p>Seems Legit!  <button type="button" class="btn btn-success">
+                                <i class="fa-solid fa-user-check"></i>
+                            </button></p>
+                            
+                        }
+                        else
+                        {
+                        <p>I'm Human I swear!  <button type="button" class="btn btn-primary shadow-no-hover" @onclick="IsHumanCheck">
+                            <i class="fa-solid fa-user"></i>
+                        </button></p>
+                        
+                        }
+                        
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="CloseEntryForm">Close</button>
                     <button type="button" class="btn btn-primary" @onclick="CreateNewEntry">Add Entry</button>
+                    
                 </div>
                 @if (responseToggler == Toggle.On)
                 {
@@ -82,28 +102,38 @@
     //Entry inputs
     private string name = "";
     private string input = "";
-
+    private bool human = false;
 
     protected override async Task OnInitializedAsync()
     {
         entriesList = await entriesController.GetGuestEntryAsync();        
     }
 
+    private void IsHumanCheck()
+    {
+        human = true;
+    }
+
     private void ShowEntryForm()
     {
         entryToggler = Toggle.On;
+        responseToggler = Toggle.Off;
+        human = false;
 
     }
 
     private void CloseEntryForm()
     {
         entryToggler = Toggle.Off;
+        responseToggler = Toggle.Off;
+        human = false;
     }
     private async void HotReload()
     {
         //Reset string and toggle
         name = string.Empty;
         input = string.Empty;
+        human = false;
         entryToggler = Toggle.Off;
 
         //Reload list
@@ -118,12 +148,13 @@
         newEntry.GuestInput = input;
         newEntry.EntryTimeDate = DateTime.Now;
 
-        //check to make sure no nulls
-        if (newEntry.GuestName == "" | newEntry.GuestName == string.Empty | newEntry.GuestInput == "" | newEntry.GuestInput == string.Empty)
+        //check to make sure no nulls or empties
+        if (newEntry.GuestName == "" | newEntry.GuestName == string.Empty | newEntry.GuestInput == "" | newEntry.GuestInput == string.Empty | human == false)
         {
             responseToggler = Toggle.On; //Handling of empty values
             name = "";
             input = "";
+            human = false;
         }
         else
         {
@@ -140,4 +171,9 @@
             else {responseToggler = Toggle.On;}
         }
     }
+    TypewriterBuilder typewriter = new TypewriterBuilder(defaultCharacterPause: 6)
+        .TypeString("Welcome to my guest book!")
+        .Pause(2000)
+        .DeleteAll(30)
+        .Loop();
 }
