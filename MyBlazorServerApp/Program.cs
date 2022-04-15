@@ -12,6 +12,7 @@ builder.Services.AddDbContext<PortfolioDbContext>(options => options.UseSqlite(b
 
 //scoped services&controllers 
 builder.Services.AddScoped<GuestEntriesController>();
+builder.Services.AddScoped<StarwarsController>();
 
 var app = builder.Build();
 

@@ -6,7 +6,7 @@ namespace MyBlazorServerApp.Data
     public class PortfolioDbContext : DbContext
     {
         public DbSet<GuestEntry> GuestEntries { get; set; }
-
+        public DbSet<StarWarsAffiliation> StarWarsAffiliations { get; set; }
         public PortfolioDbContext(DbContextOptions<PortfolioDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

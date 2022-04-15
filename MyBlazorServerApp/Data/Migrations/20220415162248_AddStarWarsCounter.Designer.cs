@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBlazorServerApp.Data;
 
@@ -10,9 +11,10 @@ using MyBlazorServerApp.Data;
 namespace MyBlazorServerApp.Data.Migrations
 {
     [DbContext(typeof(PortfolioDbContext))]
-    partial class PortfolioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220415162248_AddStarWarsCounter")]
+    partial class AddStarWarsCounter
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -44,21 +46,21 @@ namespace MyBlazorServerApp.Data.Migrations
                         new
                         {
                             GuestEntryID = 1,
-                            EntryTimeDate = new DateTime(2022, 4, 15, 14, 13, 44, 688, DateTimeKind.Local).AddTicks(7791),
+                            EntryTimeDate = new DateTime(2022, 4, 15, 12, 22, 47, 773, DateTimeKind.Local).AddTicks(1568),
                             GuestInput = "This is entry number 1",
                             GuestName = "John Doe 1"
                         },
                         new
                         {
                             GuestEntryID = 2,
-                            EntryTimeDate = new DateTime(2022, 4, 15, 14, 13, 44, 688, DateTimeKind.Local).AddTicks(7827),
+                            EntryTimeDate = new DateTime(2022, 4, 15, 12, 22, 47, 773, DateTimeKind.Local).AddTicks(1610),
                             GuestInput = "This is entry number 2",
                             GuestName = "John Doe 2"
                         },
                         new
                         {
                             GuestEntryID = 3,
-                            EntryTimeDate = new DateTime(2022, 4, 15, 14, 13, 44, 688, DateTimeKind.Local).AddTicks(7829),
+                            EntryTimeDate = new DateTime(2022, 4, 15, 12, 22, 47, 773, DateTimeKind.Local).AddTicks(1614),
                             GuestInput = "This is entry number 3",
                             GuestName = "John Doe 3"
                         });
@@ -75,8 +77,8 @@ namespace MyBlazorServerApp.Data.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("EDT")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Counter")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("AffilID");
 
