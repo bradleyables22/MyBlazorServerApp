@@ -1,17 +1,18 @@
 ﻿@page "/leadership"
-
+@using BlazorTypewriter
+<br/>
 <main class="d-flex flex-column w-100 min-vh-90 justify-content-center align-items-center overflow-auto ">
     <div class="container g-0">
         <div class="row g-0">
             <div class= "col-lg-12 d-inline-flex flex-column p-5 justify-content-center align-items-center">
-                 <iframe width="840" height="630" src="https://www.youtube.com/embed/-ayV5SFmKnY?"></iframe>
+                 <iframe width="840" height="630" src="https://www.youtube.com/embed/-ayV5SFmKnY?" class="shadow-no-hover"></iframe>
              </div>
         </div>
         <div class="row g-0">
              <div class= "col-lg-6 d-inline-flex flex-column p-5 justify-content-center align-items-center">
                  <img src="/img/vinc-logo2.png" width="400" height="300"/>
              </div>
-             <div class= "col-lg-6 d-inline-flex flex-column p-5 bg-white-94 text-center justify-content-center align-items-center">
+             <div class= "col-lg-6 d-inline-flex flex-column p-5 bg-white-94 text-center justify-content-center align-items-center shadow-no-hover">
                  <h3>I graduated at the beginning of Covid when the job market was not what it is today. I began contracting for United Health Group as a project manager over covid sites within Indiana.</h3><span></span>
                  <h3>Within months it became clear the UHGs tactics were having minimal effect at a massive price point to state taxpayers.</h3><span></span>
                  <h3>Upon termination of the UHG contract, I was approached to put a bid on confronting Covid at a new angle.</h3>
@@ -20,7 +21,7 @@
         <br/>
         <br/>
         <div class="row g-0">
-             <div class= "col-lg-12 d-inline-flex flex-column p-5 bg-white-94 center-text justify-content-center align-items-center">
+             <div class= "col-lg-12 d-inline-flex flex-column p-5 bg-white-94 center-text justify-content-center align-items-center shadow-no-hover">
                  <h1>The Rise of Blue Ridge Group</h1>
                  <h3>Blue Ridge Group is the organization I am a co-founder of that rows to meet the market need of efficient cost-effective Covid-19 testing.</h3><span></span>
                  <h3>We have been able to meet needs of Indiana and it's constituents by remaining scalable and fair priced.</h3><span></span>
@@ -28,21 +29,22 @@
              </div>
         </div>
         <br/>
+        <br/>
         <div class="row g-0">
              <div class= "col-lg-6 d-inline-flex flex-column p-5 justify-content-center align-items-center">
-                 <img src="/img/NET_Logo.png" style="height:300px; width:300px;" />
+                 <img src="/img/NET_Logo.png" style="height:300px; width:300px;" class="shadow-no-hover"/>
              </div>
-             <div class= "col-lg-6 d-inline-flex flex-column p-5 bg-white-94 justify-content-center align-items-center center-text">
-                 <h2>First and formost I am a developer.</h2>
+             <div class= "col-lg-6 d-inline-flex flex-column p-5 bg-white-94 justify-content-center align-items-center center-text shadow-no-hover">
+                 <h2>A developer First</h2>
                  <h3>Blue Ridge Group has been able to meet the fast paced Covid-19 situation utilizing propriety rapid application development built in the .NET framework. The software I've built one of the many reasons rapid testing has been available at scale and free to hoosiers.</h3>
              </div>
         </div>
         <br/>
         <div class="row g-0">
              <div class= "col-lg-12 d-inline-flex flex-column p-5 justify-content-center align-items-center">
-                 <img src="/img/Results Dash.png" width="1000" height="550"/>
+                 <img src="/img/Results Dash.png" width="1000" height="550" class="shadow-no-hover"/>
              </div>
-             <div class= "col-lg-12 d-inline-flex flex-column p-5 bg-white-94 text-center justify-content-center align-items-center">
+             <div class= "col-lg-12 d-inline-flex flex-column p-5 bg-white-94 text-center justify-content-center align-items-center shadow-no-hover">
                  <h3>Above depicts a small snapshot from a rural Covid-19 testing site located in southern Indiana.</h3>
                  <h3>Prior to Blue Ridge Group, local county health officials were not being given the analytical tools needed to make local on-the-ground decisions for their governed areas.</h3>
                 <h3>I implemented data analytic pipelines that delivered instant on-the-ground information to stakeholders so they could make educated data driven decisions.</h3>
@@ -51,39 +53,48 @@
         <br/>
         <br/>
         <div class="row g-0">
-            <div class= "col-lg-6 d-inline-flex flex-column p-5 text-center bg-white-94 justify-content-center align-items-center">
+            <div class= "col-lg-6 d-inline-flex flex-column p-5 text-center bg-white-94 justify-content-center align-items-center shadow-no-hover">
                 <h3>Our staff is comprised of some of the most selfless medical and administrative professionals you will encounter. Great software and data pipelines mean nothing if you don't have excellent boots on ground frontline workers who are commited to the mission at hand. They are largely responsible turning the messy situation handed down to us into a success.</h3>
                 <h3>As a leader my responsibility is to the support and wellbeing of these professionals in many different aspects.</h3>
              </div>
             <div class= "col-lg-6 d-inline-flex flex-column p-5 text-center f-white justify-content-center align-items-center">
-                <img src="/img/site2.jpg" width="400" height="300"/>
+                <img src="/img/site2.jpg" width="400" height="300" class="shadow-no-hover"/>
              </div>
         </div>
              <br/>
              <br/>
         <div class="row g-0">
-            <div class= "col-lg-4 d-inline-flex flex-column p-5 text-center bg-white-94 align-items-center">
-                <img src="/img/transparency.jpg" width="200" height="200" />
+            <div class= "col-lg-3 d-inline-flex flex-column p-5 text-center align-items-center">
+            </div>
+            <div class="col-lg-6 d-inline-flex flex-column p-3 center-text" style="background-color:black;color:white;border-radius:10px;padding:3px;margin:5px">
+                <h1><Typewriter Builder="@labelTW"/></h1>
+            </div>
+            <div class= "col-lg-3 d-inline-flex flex-column p-5 text-center align-items-center">
+            </div>
+        </div>
+        <div class="row g-0">
+            <div class= "col-lg-4 d-inline-flex flex-column p-5 text-center bg-white-94 align-items-center shadow-no-hover">
+                <img src="/img/transparency.jpg" width="200" height="200" class="shadow-no-hover"/><br/>
                 <p>Providing transparency on where we stand as a company and where we want to be in the future. Transparency builds a trusting communication line from the office to the frontline.</p>
              </div>
              <div class= "col-lg-3 d-inline-flex flex-column p-5 text-center justify-content-center align-items-center">
              </div>
-            <div class= "col-lg-4 d-inline-flex flex-column p-5 text-center bg-white-94 justify-content-center align-items-center">
-                <img src="/img/empathy.png" width="200" height="200" />
+            <div class= "col-lg-4 d-inline-flex flex-column p-5 text-center bg-white-94 justify-content-center align-items-center shadow-no-hover">
+                <img src="/img/empathy.png" width="200" height="200" class="shadow-no-hover"/><br/>
                 <p>Understanding our frontline's wants, needs, and concerns. Then taking action to implement policy and operational changes to address these needs. This creates a harmonious working relationship.</p>
              </div>
         </div>
         <br/>
         <br/>
         <div class="row g-0">
-            <div class= "col-lg-4 d-inline-flex flex-column p-5 text-center bg-white-94 justify-content-center align-items-center">
-                <img src="/img/delegate.jpg" width="200" height="200" />
+            <div class= "col-lg-4 d-inline-flex flex-column p-5 text-center bg-white-94 justify-content-center align-items-center shadow-no-hover">
+                <img src="/img/delegate.jpg" width="200" height="200" class="shadow-no-hover"/><br/>
                 <p>One of the hardest lessons for me to truly understand was delegation. Releasing control and empowering employees with my own trust to handle situations did not come naturally to me. The feeling of worry has been replaced with employee satisfaction in accomplishing tough tasks on time.</p>
              </div>
-             <div class= "col-lg-3 d-inline-flex flex-column p-5 text-center f-white justify-content-center align-items-center">
+             <div class= "col-lg-3 d-inline-flex flex-column p-5 text-center f-white justify-content-center align-items-center ">
              </div>
-            <div class= "col-lg-4 d-inline-flex flex-column p-5 text-center bg-white-94 justify-content-center align-items-center">
-                <img src="/img/leadfromfront.png" />
+            <div class= "col-lg-4 d-inline-flex flex-column p-5 text-center bg-white-94 justify-content-center align-items-center shadow-no-hover">
+                <img src="/img/leadfromfront.png" class="shadow-no-hover" /><br/>
                 <p>This is a mindset taken from my time as a team leader in the U.S Army. Take the time to understand your people by working the frontlines. A better understanding of what they experience leads to faster initiative implementation.</p>
              </div>
         </div>
@@ -92,5 +103,9 @@
     </div>
 </main>
 @code {
-
+    TypewriterBuilder labelTW = new TypewriterBuilder(defaultCharacterPause: 6)
+        .TypeString("My Pillars of Leadership")
+        .Pause(2000)
+        .DeleteAll(30)
+        .Loop();
 }

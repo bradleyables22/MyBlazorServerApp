@@ -1,5 +1,7 @@
 ﻿@page "/military"
 
+@using BlazorTypewriter
+
 <br/>
 <br/>
 <main class="d-flex flex-column w-100 min-vh-90 justify-content-center align-items-center overflow-auto ">
@@ -19,47 +21,48 @@
         <br/>
         <br/>
         <div class="row g-0">
-            <div class="col-lg-12 d-inline-flex flex-column p-5 center-text center-text f-white">
+            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text">
+            </div>
+            <div class="col-lg-6 d-inline-flex flex-column center-text p-5 center-text" style="background-color:black;color:white;border-radius:10px;padding:3px;margin:5px">
                 <div class="flex justify-content-center">
-                    <h1>864th Engineer Battalion</h1>
-                    <h2>617th Engineer Company</h2>
+                    <h1><Typewriter Builder="@unitTW1"/></h1><br/>
                 </div>
+            </div>
+            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text">
             </div>
         </div>
         <br/>
         <br/>
         <div class="row g-0">
-            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text f-white">
+            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text">
                 <div class="flex justify-content-center">
                      <img src="/img/Adapt.png" width="200" height="200"/>
                 </div>
             </div>
-            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text f-white">
+            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text">
                 <div class="flex justify-content-center">
                      <img src="/img/WorkEthic.png" width="200" height="200"/>
                 </div>
             </div>
-            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text f-white">
+            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text">
                 <div class="flex justify-content-center">
                      <img src="/img/Communication.png" width="200" height="200"/>
                 </div>
             </div>
-            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text f-white">
+            <div class="col-lg-3 d-inline-flex flex-column p-5 center-text center-text">
                 <div class="flex justify-content-center">
                      <img src="/img/Conflict.png" width="200" height="200"/>
                 </div>
             </div>
         </div>
-
-
         <div class="row g-0">
             <div class="col-lg-6 d-inline-flex flex-column p-5 ">
-                <img src="/img/fixxers.jpeg" /><br/>
-                <img src="/img/truck.jpg" /><br/>
-                <img src="/img/teardown.jpg" /><br/>
+                <img src="/img/fixxers.jpeg" class="shadow-no-hover"/><br/>
+                <img src="/img/truck.jpg" class="shadow-no-hover"/><br/>
+                <img src="/img/teardown.jpg" class="shadow-no-hover"/>
             </div>
-            <div class="col-lg-6 d-inline-flex flex-column p-5 center-text bg-white-94 justify-content-center align-items-center">
-                <h1>Forged in Fire & Sand</h1><br/>
+            <div class="col-lg-6 d-inline-flex flex-column center-text bg-white-94 p-5 justify-content-center align-items-center shadow-no-hover">
+                <h1><Typewriter Builder="@typewriter"/></h1><br/>
                 <h3>Hard work & dedication to the project at hand. This is the driving force of an Army Engineer. While in Afghanistan myself and those serving within my command were tasked with various and numerous missions with the over-all objective of tactically removing equipment, structures, and improvisions that would otherwise could fall into the hands of the enemy as NATO/ISAF forces pulled make from the East over the foothills of the himalayas.</h3>
                 <h3>This was done without access to support, often fending for ourselves at the what seemed to be the edge of the world.</h3>
                 <h3>Through trial of fire I became the leader I am today.</h3>
@@ -73,5 +76,17 @@
 <br/>
 
 @code {
-
+    TypewriterBuilder typewriter = new TypewriterBuilder(defaultCharacterPause: 6)
+        .TypeString("Forged in Fire & Sand")
+        .Pause(1000)
+        .DeleteAll(30)
+        .Loop();
+    TypewriterBuilder unitTW1 = new TypewriterBuilder(defaultCharacterPause: 6)
+        .TypeString("864th Engineer Battalion")
+        .Pause(1000)
+        .DeleteAll(30)
+        .TypeString("617th Engineer Company")
+        .Pause(1000)
+        .DeleteAll(30)
+        .Loop();
 }
