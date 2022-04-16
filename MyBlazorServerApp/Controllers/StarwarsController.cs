@@ -37,6 +37,7 @@ namespace MyBlazorServerApp.Controllers
             else
             {
                 _context.StarWarsAffiliations.Remove(starWarsAffiliation);
+                await _context.SaveChangesAsync();
                 return true;
             }
         }
@@ -50,10 +51,19 @@ namespace MyBlazorServerApp.Controllers
             string sith = "s";
             return await _context.StarWarsAffiliations.CountAsync(e => e.Affiliation == sith);
         }
-        public async Task<int> GetNotCoolCountAsync()
+        public async Task<bool> ResetCountAsync()
         {
-            string nn = "n";
-            return await _context.StarWarsAffiliations.CountAsync(e => e.Affiliation == nn);
+            List<StarWarsAffiliation> swaList = new List<StarWarsAffiliation>();
+
+            swaList = await _context.StarWarsAffiliations.ToListAsync();
+
+            foreach (var affiliation in swaList)
+            {
+                _context.StarWarsAffiliations.Remove(affiliation);
+                await _context.SaveChangesAsync();
+            }
+            return true;
         }
+
     }
 }

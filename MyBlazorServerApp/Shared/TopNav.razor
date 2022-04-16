@@ -1,7 +1,7 @@
-﻿@inject NavigationManager navigationManager
+﻿@using Data.Models
+
+@inject NavigationManager navigationManager
 @inject Controllers.StarwarsController starWarsController
-
-
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark f-white p-3">
   <div class="container-fluid">
@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse f-white" id="navbarNavDropdown">
       <ul class="navbar-nav ">
         <li class="nav-item dropdown ">
-          <a class="nav-link dropdown-toggle" href="/about" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;">
             About Me
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -36,7 +36,7 @@
         </li>
       </ul>
     </div>
-    <div class="nav-item center-text">
+    <div class="nav-item center-text justify-content-center">
             @if (voteToggler == Toggle.On)
             {
                 <i class="fa-brands fa-sith fa-xl"> @sithCount </i><br/>
@@ -44,7 +44,7 @@
             }
             else
             {
-                <p>Cast Your Vote</p>
+                <p>Cast Your Vote!</p>
                 <i class="fa-brands fa-sith fa-xl fa-fade" @onclick="VotedSith">   Sith</i>
                 <i class="fa-brands fa-jedi-order fa-xl fa-fade" @onclick="VotedJedi">   Jedi</i>
             }
@@ -59,22 +59,48 @@
 
     //Base Toggler
     public enum Toggle {On,Off};
-    //Toggle fo rif they have voted or not
+    //Toggle for if they have voted or not
     public Toggle voteToggler = Toggle.Off;
 
-    protected override async Task OnInitializedAsync()
+    private async void GetCountsAsync()
     {
         sithCount = await starWarsController.GetSithCountAsync();
         jediCount = await starWarsController.GetJediCountAsync();
     }
     private async void VotedJedi()
     {
-        voteToggler = Toggle.On;
-        await OnInitializedAsync();
+        StarWarsAffiliation swa = new StarWarsAffiliation();
+        swa.AffilID = 0;
+        swa.Affiliation = "j";
+        swa.EDT = DateTime.Now;
+
+        bool response = await starWarsController.AddAffiliationAsync(swa);
+        if (response)
+        {
+            voteToggler = Toggle.On;
+            GetCountsAsync();
+        }
+        else
+        {
+            voteToggler = Toggle.Off;
+        }
     }
     private async void VotedSith()
     {
-        voteToggler = Toggle.On;
-        await OnInitializedAsync();
+        StarWarsAffiliation swa = new StarWarsAffiliation();
+        swa.AffilID = 0;
+        swa.Affiliation = "s";
+        swa.EDT = DateTime.Now;
+
+        bool response = await starWarsController.AddAffiliationAsync(swa);
+        if (response)
+        {
+            voteToggler = Toggle.On;
+            GetCountsAsync();
+        }
+        else
+        {
+            voteToggler = Toggle.Off;
+        }
     }
 }

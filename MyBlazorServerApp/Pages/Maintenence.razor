@@ -1,0 +1,167 @@
+﻿@page "/crud"
+
+@using MyBlazorServerApp.Controllers
+@using MyBlazorServerApp.Data.Models
+
+@inject UserController uCon
+@inject GuestEntriesController gCon
+@inject StarwarsController sCon
+
+
+<div class="container g-0 justify-content-center align-items-center center-text p-5">
+    @if (adminToggler == Toggle.On)
+{
+    <div class="modal" tabindex="-1" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Admin Login</h5>
+                    </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <input type="text" placeholder="UserName" @bind="username" style="width:90%;">
+                    </div>
+                    <div class="modal-body" style="width:90%;">
+                        <input type="password" placeholder="Password" @bind="userpassword" style="width:90%;"></input>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" @onclick="CheckCredentialsAsync">Login</button>
+                </div>
+                @if (responseToggler == Toggle.On)
+                {
+                    <div class="modal-footer justify-content-center align-items-center bg-warning">
+                    <div class="center-text warner f-white">
+                        <p>Oops! Your either left something blank or something went wrong.</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <table class="table" style="background-color:white;">
+      <thead>
+        <tr>
+          <th scope="col">EntryInfo</th>
+          <th scope="col">Guest</th>
+          <th scope="col">Input</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+          @foreach (var entry in entriesList)
+          {
+            <tr>
+                <td>@entry.GuestEntryID - @entry.EntryTimeDate</td>
+                <td>@entry.GuestName</td>
+                <td>@entry.GuestInput</td>
+                <td>
+                    @if (errorToggler == Toggle.Off)
+                    {
+                        <button class="btn btn-danger" @onclick="(() => DeleteEntry(entry.GuestEntryID))">Delete</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-warning" @onclick="(() => DeleteEntry(entry.GuestEntryID))">Error: Try Again</button>
+                    }
+                    
+                </td>
+            </tr>
+          }
+      </tbody>
+    </table>
+    <div class="row g-0">
+        <div class="col-lg-12 d-inline-flex flex-column p-3 justify-content-center align-items-center bg-white-94 center-text shadow-no-hover">
+            <h1>Starwars Affiliation Count Controls</h1><br/>
+            <div class="col-lg-4 d-inline-flex flex-column">
+                <h3>Jedi: @jediCount</h3>
+            </div>
+            <div class="col-lg-4 d-inline-flex flex-column"></div>
+            <div class="col-lg-4 d-inline-flex flex-column">
+                <h3>Sith: @sithCount</h3>
+            </div>
+        </div>
+        <div class="col-lg-12 d-inline-flex flex-column p-3 justify-content-center align-items-center bg-white-94 center-text shadow-no-hover">
+            <div class="col-lg-4 d-inline-flex flex-column"></div>
+            <div class="col-lg-4 d-inline-flex flex-column">
+                <button class="btn btn-success" @onclick="CountResetAsync">Reset</button>
+            </div>
+            <div class="col-lg-4 d-inline-flex flex-column"></div>
+        </div>
+    </div>
+}
+</div>
+
+
+@code {
+    //Base Toggler
+    private enum Toggle {On,Off};
+    private Toggle adminToggler = Toggle.On; // for admin modal
+    private Toggle responseToggler = Toggle.Off; // if info entered is incorrect or missing
+    private Toggle errorToggler = Toggle.Off; // for delete error
+
+    //login variables
+    private string username = "";
+    private string userpassword = "";
+
+    //affiliation variables
+    int sithCount = 0;
+    int jediCount = 0;
+
+    //List of current entries
+    private List<GuestEntry> entriesList = new List<GuestEntry>();
+
+    private void HotReload()
+    {
+        //Reset string and toggle
+        username = string.Empty;
+        userpassword = string.Empty;
+
+    }
+    private async Task CheckCredentialsAsync()
+    {
+        bool response = await uCon.UserSigninCheckAsync(username, userpassword);
+
+        if (response)
+        {
+            adminToggler = Toggle.Off;
+            entriesList = await gCon.GetGuestEntryAsync();
+            GetCounts();
+        }
+        else
+        {
+            HotReload();
+            adminToggler = Toggle.On;
+            responseToggler = Toggle.On;
+        }
+    }
+    private async void DeleteEntry(int id)
+    {
+        bool resp = await gCon.DeleteEntryAsync(id);
+        if (resp)
+        {
+            errorToggler = Toggle.Off;
+            entriesList = await gCon.GetGuestEntryAsync();
+        }
+        else
+        {
+            errorToggler = Toggle.On;
+        }
+    }
+    private async void GetCounts()
+    {
+        jediCount = await sCon.GetJediCountAsync();
+        sithCount = await sCon.GetSithCountAsync();
+    }
+    private async void CountResetAsync()
+    {
+        bool resetResponse = await sCon.ResetCountAsync();
+        if (resetResponse)
+        {
+            GetCounts();
+        }
+    }
+}

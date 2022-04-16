@@ -7,6 +7,8 @@ namespace MyBlazorServerApp.Data
     {
         public DbSet<GuestEntry> GuestEntries { get; set; }
         public DbSet<StarWarsAffiliation> StarWarsAffiliations { get; set; }
+
+        public DbSet<UserInfo> users { get; set; }
         public PortfolioDbContext(DbContextOptions<PortfolioDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,6 +29,19 @@ namespace MyBlazorServerApp.Data
                 };
             }
             modelBuilder.Entity<GuestEntry>().HasData(entriesToSeed);
+
+            UserInfo[] userSeed = new UserInfo[1];
+            for (int i = 1; i < 2; i++)
+            {
+                userSeed[i - 1] = new UserInfo
+                {
+                    UserID = i,
+                    UserName = "TheLordCommander",
+                    UserPassword = "Loser9009!",
+                    Role = "Admin",
+                };
+            }
+            modelBuilder.Entity<UserInfo>().HasData(userSeed);
         }
     }
 }

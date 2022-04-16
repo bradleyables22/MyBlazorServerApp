@@ -45,6 +45,7 @@ namespace MyBlazorServerApp.Controllers
             else
             {
                 _context.GuestEntries.Remove(entry);
+                await _context.SaveChangesAsync();
                 return true;
             }
         }

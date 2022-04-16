@@ -1,5 +1,4 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+
 using Microsoft.EntityFrameworkCore;
 using MyBlazorServerApp.Controllers;
 using MyBlazorServerApp.Data;
@@ -13,6 +12,7 @@ builder.Services.AddDbContext<PortfolioDbContext>(options => options.UseSqlite(b
 //scoped services&controllers 
 builder.Services.AddScoped<GuestEntriesController>();
 builder.Services.AddScoped<StarwarsController>();
+builder.Services.AddScoped<UserController>();
 
 var app = builder.Build();
 
