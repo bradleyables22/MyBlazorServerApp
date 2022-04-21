@@ -5,7 +5,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark f-white p-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Bradley Ables &#8211 .NET Developer </a>
+    <a class="navbar-brand" href="/">Bradley Ables &#8211 .NET | Python | Tableau </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -72,6 +72,15 @@
     public enum Toggle {On,Off};
     //Toggle for if they have voted or not
     public Toggle voteToggler = Toggle.Off;
+
+    private List<string> devList = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        devList.Add(".NET Developer");
+        devList.Add("Python Developer");
+        devList.Add("SQL Developer");
+    }
 
     private async void GetCountsAsync()
     {

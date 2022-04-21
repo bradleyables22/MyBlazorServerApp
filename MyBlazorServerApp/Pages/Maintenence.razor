@@ -43,6 +43,30 @@
 else
 {
     <table class="table" style="background-color:white;">
+        <thead>
+        <tr>
+          <th scope="col">UserID</th>
+          <th scope="col">Username</th>
+          <th scope="col">Role</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+          @foreach (var user in usersList)
+          {
+              <tr>
+                  <td>@user.UserID</td>
+                  <td>@user.UserName</td>
+                  <td>@user.Role</td>
+                  <td>
+                      <input type="password" placeholder="New Password" @bind="newPassword"/>
+                      <button class="btn-link btn-warning" @onclick="() => UpdatePassword(user.UserID, newPassword)">Update PW</button>
+                  </td>
+              </tr>
+          }
+      </tbody>
+    </table><br/>
+    <table class="table" style="background-color:white;">
       <thead>
         <tr>
           <th scope="col">EntryInfo</th>
@@ -106,13 +130,15 @@ else
     //login variables
     private string username = "";
     private string userpassword = "";
-
+    private string newPassword = "";
     //affiliation variables
     int sithCount = 0;
     int jediCount = 0;
 
     //List of current entries
     private List<GuestEntry> entriesList = new List<GuestEntry>();
+    //List of current users
+    private List<UserInfo> usersList = new List<UserInfo>();
 
     private void HotReload()
     {
@@ -129,6 +155,7 @@ else
         {
             adminToggler = Toggle.Off;
             entriesList = await gCon.GetGuestEntryAsync();
+            usersList = await uCon.GetAllUsersAsync();
             GetCounts();
         }
         else
@@ -162,6 +189,15 @@ else
         if (resetResponse)
         {
             GetCounts();
+        }
+    }
+    private async void UpdatePassword(int id,string newpassword)
+    {
+        bool response = await uCon.UpdatePasswordAsync(id, newpassword);
+
+        if (response)
+        {
+            usersList = await uCon.GetAllUsersAsync();
         }
     }
 }

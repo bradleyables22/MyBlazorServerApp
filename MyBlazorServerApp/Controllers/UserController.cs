@@ -32,5 +32,27 @@ namespace MyBlazorServerApp.Controllers
                 return false;
             }
         }
+        public async Task<bool> UpdatePasswordAsync(int id, string newPassword)
+        {
+            UserInfo userToBeUpdated = new UserInfo();
+            userToBeUpdated = await _context.users.FindAsync(id);
+
+            if (userToBeUpdated != null)
+            {
+                userToBeUpdated.UserPassword = newPassword;
+                _context.users.Update(userToBeUpdated);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+
+        }
+        public async Task<List<UserInfo>> GetAllUsersAsync()
+        {
+            return await _context.users.ToListAsync();
+        }
     }
 }
