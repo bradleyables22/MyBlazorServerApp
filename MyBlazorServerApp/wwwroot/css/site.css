@@ -8,7 +8,8 @@
      5. Custom responsive styles
      6. Admin area
      7. QuillJS
-     8. Blazor default styles
+     8. Blazor default style
+     9. Flappybird Styles
 */
 
 /* 1. General */
@@ -151,17 +152,6 @@ body {
         border-color: #a68f00;
     }
 
-.admin-index-thumbnail-image {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.admin-crud-form-thumbnail-image {
-    display: block;
-    max-width: 50%;
-}
-
 .hover-bg-white:hover {
     background-color: #fff;
 }
@@ -186,36 +176,6 @@ body {
 }
 
 /* 6. Admin area */
-.admin-area-main {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 100vh;
-    max-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
-    background-color: #404040;
-}
-
-.admin-area-content {
-    overflow-y: scroll;
-    padding: 10vw 10vw;
-}
-
-/* 7. QuillJS */
-.ql-container.ql-snow {
-    border: none;
-}
-
-.ql-editor {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1rem;
-    padding: 0px;
-}
-
-    .ql-editor .ql-video {
-        width: 640px;
-        height: 360px;
-    }
 
 /* 8. Blazor default styles */
 .validation-message {
@@ -281,4 +241,82 @@ body {
 
     .blazor-error-boundary::after {
         content: "An error has occurred."
+    }
+/* 9. Flappy bird styles */
+.game-container {
+    width: 400px;
+    height: 584px;
+    top:200px;
+    position: absolute;
+    left: 64px;
+    background-color:darkslateblue;
+}
+
+.border-left {
+    width: 64px;
+    height: 584px;
+    position: absolute;
+    top:200px;
+    background-color: darkslateblue;
+    z-index: +2;
+}
+
+.border-right {
+    left: 464px;
+    width: 140px;
+    height: 664px;
+    top:120px;
+    position: absolute;
+    background-color: darkslateblue;
+    z-index: +2;
+}
+
+.border-top {
+    width: 400px;
+    height: 80px;
+    position: absolute;
+    background-color: darkslateblue;
+    z-index: +2;
+    top:-80px;
+    left: 0px;
+}
+
+.sky {
+    background-image: url(../img/Flappy/fb-game-background.png);
+    background-size: contain;
+    width: 400px;
+    height: 464px;
+    position: absolute;
+}
+
+.ground {
+    background-image: url(../img/Flappy/bottom-background.png);
+    background-size: contain;
+    width: 400px;
+    height: 120px;
+    position: absolute;
+    top: 464px;
+    z-index: +1;
+}
+
+.bird {
+    background-image:url(../img/Flappy/flappy-bird.png);
+    background-size:contain;
+    width: 48px;
+    height: 36px;
+    left: 176px;
+    position: absolute;
+    border-radius:50%;
+}
+
+.pipe {
+    background-image: url(../img/Flappy/flappybird-pipe.png);
+    background-size: contain;
+    width: 48px;
+    height: 240px;
+    position: absolute;
+}
+
+    .pipe.top {
+        transform: rotate(180deg);
     }
