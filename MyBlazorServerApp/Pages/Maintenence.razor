@@ -60,7 +60,7 @@ else
                   <td>@user.Role</td>
                   <td>
                       <input type="password" placeholder="New Password" @bind="newPassword"/>
-                      <button class="btn-link btn-warning" @onclick="() => UpdatePassword(user.UserID, newPassword)">Update PW</button>
+                      <button class="btn btn-warning" @onclick="() => UpdatePassword(user.UserID, newPassword)">Update PW</button>
                   </td>
               </tr>
           }
@@ -197,6 +197,7 @@ else
 
         if (response)
         {
+            newPassword = "";
             usersList = await uCon.GetAllUsersAsync();
         }
     }

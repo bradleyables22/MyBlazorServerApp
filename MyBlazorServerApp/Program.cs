@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using MyBlazorServerApp.Controllers;
 using MyBlazorServerApp.Data;
+using MyBlazorServerApp.Data.Hubs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -32,5 +34,5 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-
+app.MapHub<ChatHub>(ChatHub.HubUrl);
 app.Run();
