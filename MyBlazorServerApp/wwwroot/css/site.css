@@ -380,3 +380,50 @@ textarea {
     font-weight: bold;
     color: #000;
 }
+/*otherstuff*/
+profile-h-w {
+    height: 25%;
+    width: 25%;
+}
+
+.typer {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 5px;
+}
+.resume-doc {
+    height: 1056px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.resume-full-sized {
+    width: 90%;
+    height: 1056px;
+}
+
+.rounded {
+    border-radius: 20px;
+}
+
+.con {
+}
+
+.mb-s {
+    margin-bottom: 5%;
+}
+
+mt-s {
+    margin-top: 5%;
+}
+.insignia {
+    background-image: url(/wwwroot/img/864th.png);
+}
+
+.s-400 {
+    width: 300px;
+    height: 400px;
+}
